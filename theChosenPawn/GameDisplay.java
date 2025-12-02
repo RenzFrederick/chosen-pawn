@@ -43,21 +43,8 @@ public class GameDisplay{
             int mx = e.getX();
             int my = e.getY();
         
-            int xstart = (frame.getWidth()-(5*Constants.cellSize))/2;
-            int ystart = (frame.getHeight()-(5*Constants.cellSize))/3;
-
-
-            int xend = xstart + (5*Constants.cellSize);
-            int yend = ystart + (5*Constants.cellSize);
-
-            if (mx < xend && my < yend && mx > xstart && my > ystart){
-                hoveredx = (mx - xstart) / Constants.cellSize;
-                hoveredy = (my - ystart) / Constants.cellSize;
-            }
-            else {
-                hoveredx = -1;
-                hoveredy = -1;
-            }
+            hoveredx = Board.getTileX(mx);
+            hoveredy = Board.getTileY(my);
 
             grid.repaint();
         }
@@ -71,29 +58,14 @@ public class GameDisplay{
             public void mouseReleased(MouseEvent e){}
             public void mousePressed(MouseEvent e){}
             public void mouseEntered(MouseEvent e){}
-
-            //in refactoring, combine these into one method that can be called by different
+            
             @Override 
             public void mouseClicked(MouseEvent e){
                 int mx = e.getX();
                 int my = e.getY();
         
-                int xstart = (frame.getWidth()-(5*Constants.cellSize))/2;
-                int ystart = (frame.getHeight()-(5*Constants.cellSize))/3;
-
-
-                int xend = xstart + (5*Constants.cellSize);   
-                int yend = ystart + (5*Constants.cellSize);
-
-                if (mx < xend && my < yend && mx > xstart && my > ystart){
-                    selectedx = (mx - xstart) / Constants.cellSize;
-                    selectedy = (my - ystart) / Constants.cellSize;
-               }
-                else {
-                    selectedx = -1;
-                    selectedy = -1;
-                }
-
+                selectedx = Board.getTileX(mx);
+                selectedy = Board.getTileY(my);
                 grid.repaint();
             }
         });
