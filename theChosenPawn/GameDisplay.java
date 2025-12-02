@@ -8,12 +8,12 @@ import java.io.IOException;
 
 public class GameDisplay{
 
-    public static int cellSize = 51; // Size of each cell
+    //instantiate JFrame
     public static JFrame frame = new JFrame("The Chosen Pawn");
-    private static int hoveredy = -1;
-    private static int hoveredx = -1;
-    private static int selectedx = -1;
-    private static int selectedy = -1;
+    protected static int hoveredy = -1;
+    protected static int hoveredx = -1;
+    protected static int selectedx = -1;
+    protected static int selectedy = -1;
 
     public static void main(String[] args) throws IOException{
         // generate window
@@ -35,34 +35,7 @@ public class GameDisplay{
         // configure panel as background and add a transparent grid overlay
         panel.setLayout(new java.awt.BorderLayout());
 
-        JPanel grid = new JPanel() {
-            @Override
-            protected void paintComponent(java.awt.Graphics g) {
-                super.paintComponent(g);
-                int counter = 0;
-                int xstart = (getWidth()-(5*cellSize))/2;
-                int ystart = (getHeight()-(5*cellSize))/3;
-                for (int x = xstart; x < xstart+(5*cellSize); x += cellSize) {
-                    for (int y = ystart; y < ystart+(5*cellSize); y += cellSize) {
-                        if (counter%2 == 0) {
-                            g.setColor(new java.awt.Color(120, 180, 120)); 
-                        } else {
-                            g.setColor(new java.awt.Color(255, 255, 230)); 
-                        }
-                        if (((x - xstart) / cellSize == hoveredx) && ((y - ystart) / cellSize == hoveredy)){
-                            g.setColor(new java.awt.Color(255, 230, 230));
-                        }
-                        if (((x - xstart) / cellSize == selectedx) && ((y - ystart) / cellSize == selectedy)){
-                            g.setColor(new java.awt.Color(255, 200, 200));
-                        }
-                        g.fillRect(x, y, cellSize, cellSize); // Draw each cell
-                        counter++;
-                    }
-                }
-                
-            }
-    };
-
+        JPanel grid = new BoardDisplay();
         grid.addMouseMotionListener(new MouseMotionListener() {
         
         @Override
@@ -70,16 +43,16 @@ public class GameDisplay{
             int mx = e.getX();
             int my = e.getY();
         
-            int xstart = (frame.getWidth()-(5*cellSize))/2;
-            int ystart = (frame.getHeight()-(5*cellSize))/3;
+            int xstart = (frame.getWidth()-(5*Constants.cellSize))/2;
+            int ystart = (frame.getHeight()-(5*Constants.cellSize))/3;
 
 
-            int xend = xstart + (5*cellSize);
-            int yend = ystart + (5*cellSize);
+            int xend = xstart + (5*Constants.cellSize);
+            int yend = ystart + (5*Constants.cellSize);
 
             if (mx < xend && my < yend && mx > xstart && my > ystart){
-                hoveredx = (mx - xstart) / cellSize;
-                hoveredy = (my - ystart) / cellSize;
+                hoveredx = (mx - xstart) / Constants.cellSize;
+                hoveredy = (my - ystart) / Constants.cellSize;
             }
             else {
                 hoveredx = -1;
@@ -105,16 +78,16 @@ public class GameDisplay{
                 int mx = e.getX();
                 int my = e.getY();
         
-                int xstart = (frame.getWidth()-(5*cellSize))/2;
-                int ystart = (frame.getHeight()-(5*cellSize))/3;
+                int xstart = (frame.getWidth()-(5*Constants.cellSize))/2;
+                int ystart = (frame.getHeight()-(5*Constants.cellSize))/3;
 
 
-                int xend = xstart + (5*cellSize);   
-                int yend = ystart + (5*cellSize);
+                int xend = xstart + (5*Constants.cellSize);   
+                int yend = ystart + (5*Constants.cellSize);
 
                 if (mx < xend && my < yend && mx > xstart && my > ystart){
-                    selectedx = (mx - xstart) / cellSize;
-                    selectedy = (my - ystart) / cellSize;
+                    selectedx = (mx - xstart) / Constants.cellSize;
+                    selectedy = (my - ystart) / Constants.cellSize;
                }
                 else {
                     selectedx = -1;
