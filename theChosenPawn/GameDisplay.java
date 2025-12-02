@@ -10,8 +10,10 @@ public class GameDisplay{
 
     public static int cellSize = 51; // Size of each cell
     public static JFrame frame = new JFrame("The Chosen Pawn");
-    private static int hoveredRow = -1;
-    private static int hoveredCol = -1;
+    private static int hoveredy = -1;
+    private static int hoveredx = -1;
+    private static int selectedx = -1;
+    private static int selectedy = -1;
 
     public static void main(String[] args) throws IOException{
         // generate window
@@ -47,8 +49,11 @@ public class GameDisplay{
                         } else {
                             g.setColor(new java.awt.Color(255, 255, 230)); 
                         }
-                        if (((x - xstart) / cellSize == hoveredCol) && ((y - ystart) / cellSize == hoveredRow)){
+                        if (((x - xstart) / cellSize == hoveredx) && ((y - ystart) / cellSize == hoveredy)){
                             g.setColor(new java.awt.Color(255, 230, 230));
+                        }
+                        if (((x - xstart) / cellSize == selectedx) && ((y - ystart) / cellSize == selectedy)){
+                            g.setColor(new java.awt.Color(255, 200, 200));
                         }
                         g.fillRect(x, y, cellSize, cellSize); // Draw each cell
                         counter++;
@@ -73,26 +78,51 @@ public class GameDisplay{
             int yend = ystart + (5*cellSize);
 
             if (mx < xend && my < yend && mx > xstart && my > ystart){
-                hoveredCol = (mx - xstart) / cellSize;
-                hoveredRow = (my - ystart) / cellSize;
+                hoveredx = (mx - xstart) / cellSize;
+                hoveredy = (my - ystart) / cellSize;
             }
             else {
-                hoveredCol = -1;
-                hoveredRow = -1;
+                hoveredx = -1;
+                hoveredy = -1;
             }
 
             grid.repaint();
         }
 
-        @Override
-        public void mouseDragged(MouseEvent e) {
-            // TODO Auto-generated method stub
-            throw new UnsupportedOperationException("Unimplemented method 'mouseDragged'");
-        }
+        //unused implementations
+        public void mouseDragged(MouseEvent e) {}
     });
 
         grid.addMouseListener(new MouseListener() {
+            public void mouseExited(MouseEvent e){}
+            public void mouseReleased(MouseEvent e){}
+            public void mousePressed(MouseEvent e){}
+            public void mouseEntered(MouseEvent e){}
 
+            //in refactoring, combine these into one method that can be called by different
+            @Override 
+            public void mouseClicked(MouseEvent e){
+                int mx = e.getX();
+                int my = e.getY();
+        
+                int xstart = (frame.getWidth()-(5*cellSize))/2;
+                int ystart = (frame.getHeight()-(5*cellSize))/3;
+
+
+                int xend = xstart + (5*cellSize);   
+                int yend = ystart + (5*cellSize);
+
+                if (mx < xend && my < yend && mx > xstart && my > ystart){
+                    selectedx = (mx - xstart) / cellSize;
+                    selectedy = (my - ystart) / cellSize;
+               }
+                else {
+                    selectedx = -1;
+                    selectedy = -1;
+                }
+
+                grid.repaint();
+            }
         });
 
         grid.setOpaque(false); // let background image show through
