@@ -1,27 +1,24 @@
 import java.util.ArrayList;
 
 public class Pawn extends Piece{
-    public ArrayList<Integer> position;
     public String rank = "pawn";
     public int player;
     public boolean chosen;
 
-    public ArrayList<ArrayList<Integer>> loadMoves(){
-        ArrayList<ArrayList<Integer>>moves = new ArrayList<ArrayList<Integer>>();
-        ArrayList<Integer> coordinates = position;
-        coordinates.set(0, coordinates.get(0)+1);
+    public ArrayList<Integer> loadMoves(int x, int y){
+        ArrayList<Integer> moves = new ArrayList<Integer>();
 
         if (player == 0){
-            coordinates.set(0, coordinates.get(0)+1);
-            if (Board.isOccupied(coordinates)) {
-                moves.add(coordinates);
+            if (Board.isOccupied(x+1, y)) {
+                moves.add(x+1);
+                moves.add(y);
             } 
         }
         else if (player == 1){
-            coordinates.set(0, coordinates.get(0)-1);
-            if (Board.isOccupied(coordinates)) {
-                moves.add(coordinates);
-            }
+            if (Board.isOccupied(x-1, y)) {
+                moves.add(x-1);
+                moves.add(y);
+            } 
         }
 
         return moves;

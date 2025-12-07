@@ -14,17 +14,24 @@ public class GameDisplay{
     protected static int hoveredx = -1;
     protected static int selectedx = -1;
     protected static int selectedy = -1;
+    final BufferedImage whitePawn = null;
+    final BufferedImage blackPawn = null;
+
 
     public static void main(String[] args) throws IOException{
         // generate window
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(342, 683);
+        
+        Board.resetBoard();
+        
 
-        // load image
-        final BufferedImage myPicture = ImageIO.read(new File("theChosenPawn/sprites/image.png"));
+        // load images
+        final BufferedImage myPicture = ImageIO.read(new File("sprites\\background.png"));
+        //final BufferedImage whitePawn = ImageIO.read(new File("theChosenPawn/sprites/whitepawn.png"));
 
         // custom panel that scales the image to fill the entire window
-        JPanel panel = new JPanel() {
+        JLayeredPane panel = new JLayeredPane() {
             @Override
             protected void paintComponent(java.awt.Graphics g) {
                 super.paintComponent(g);
@@ -33,7 +40,7 @@ public class GameDisplay{
         };
 
         // configure panel as background and add a transparent grid overlay
-        panel.setLayout(new java.awt.BorderLayout());
+        panel.setLayout(null);
 
         JPanel grid = new BoardDisplay();
         grid.addMouseMotionListener(new MouseMotionListener() {
@@ -70,9 +77,16 @@ public class GameDisplay{
             }
         });
 
+        JPanel pieces = new PieceDisplay();
         grid.setOpaque(false); // let background image show through
+        pieces.setOpaque(false);
+        
+        grid.setBounds(0, 0, 342, 683);
+        pieces.setBounds(0, 0, 342, 683);
 
-        panel.add(grid, java.awt.BorderLayout.CENTER);
+        panel.add(grid, Integer.valueOf(0));
+        panel.add(pieces, Integer.valueOf(1));
+
         frame.add(panel);
         frame.setVisible(true);
 }}
