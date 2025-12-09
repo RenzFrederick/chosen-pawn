@@ -23,7 +23,7 @@ public class GameDisplay{
         // custom panel that scales the image to fill the entire window
         JLayeredPane panel = new JLayeredPane();
 
-        ImageIcon backgroundIcon = new ImageIcon("sprites\\background.gif");
+        ImageIcon backgroundIcon = new ImageIcon("theChosenPawn\\sprites\\background.gif");
         JLabel backgroundLabel = new JLabel(backgroundIcon);
         backgroundLabel.setBounds(0, 0, frame.getWidth(), frame.getHeight());
         panel.add(backgroundLabel, Integer.valueOf(-1));

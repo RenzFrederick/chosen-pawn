@@ -6,51 +6,19 @@ public class Board {
     private static ArrayList<Integer> occupiedxb = new ArrayList<Integer>();
     private static ArrayList<Integer> occupiedyb = new ArrayList<Integer>();
     public static boolean isOccupiedWhite(int x, int y){
-        ArrayList<Integer> xs = new ArrayList<Integer>();
-        ArrayList<Integer> ys = new ArrayList<Integer>(); 
         for (int i = 0; i < occupiedxw.size(); i++){
-            if (occupiedxw.get(i) == x){
-                xs.add(i);
-            }
-        }
-        for (int i = 0; i < occupiedyw.size(); i++){
-            if (occupiedyw.get(i) == y){
-                ys.add(i);
-            }
-        }
-        
-        for (int a : xs) {
-            for (int b : ys) {
-                if (a == b) {
+                if (occupiedxw.get(i) == x && Board.occupiedyw.get(i) == y){
                     return true;
-                }
-            }
-        }
-        return false;
+                }}
+                return false;
     }
 
     public static boolean isOccupiedBlack(int x, int y){
-        ArrayList<Integer> xs = new ArrayList<Integer>();
-        ArrayList<Integer> ys = new ArrayList<Integer>(); 
-        for (int i = 0; i < occupiedxb.size(); i++){
-            if (occupiedxb.get(i) == x){
-                xs.add(i);
-            }
-        }
-        for (int i = 0; i < occupiedyb.size(); i++){
-            if (occupiedyb.get(i) == y){
-                ys.add(i);
-            }
-        }
-        
-        for (int a : xs) {
-            for (int b : ys) {
-                if (a == b) {
+       for (int i = 0; i < occupiedxb.size(); i++){
+                if (occupiedxb.get(i) == x && Board.occupiedyb.get(i) == y){
                     return true;
-                }
-            }
-        }
-        return false;
+                }}
+                return false;
     }
 
     public static void resetBoard(){

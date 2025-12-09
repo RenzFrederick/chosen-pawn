@@ -10,8 +10,8 @@ public class PieceDisplay extends JPanel {
     private BufferedImage whitePawn;
 
     public PieceDisplay() throws IOException {
-        blackPawn = ImageIO.read(new File("sprites/blackpawn.png"));
-        whitePawn = ImageIO.read(new File("sprites/whitepawn.png"));
+        blackPawn = ImageIO.read(new File("theChosenPawn\\sprites\\blackpawn.png"));
+        whitePawn = ImageIO.read(new File("theChosenPawn\\sprites\\whitepawn.png"));
     }
 
     @Override
