@@ -6,6 +6,5 @@ public abstract class Piece {
     public boolean chosen;
 
     public abstract ArrayList<Integer> loadMoves(int x, int y);
-    public abstract void move();
     public abstract void promote();
 }

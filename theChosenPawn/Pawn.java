@@ -8,24 +8,21 @@ public class Pawn extends Piece{
     public ArrayList<Integer> loadMoves(int x, int y){
         ArrayList<Integer> moves = new ArrayList<Integer>();
 
-        if (player == 0){
-            if (Board.isOccupied(x+1, y)) {
+        if (Board.isOccupiedWhite(x, y) != true && Board.isOccupiedBlack(x, y) != true ){
+            return moves;
+        }
+        else if (Board.isOccupiedWhite(x, y) && (Board.isOccupiedWhite(x+1, y) != true && Board.isOccupiedBlack(x+1, y) != true)) {
                 moves.add(x+1);
                 moves.add(y);
             } 
-        }
-        else if (player == 1){
-            if (Board.isOccupied(x-1, y)) {
+        else if (Board.isOccupiedBlack(x, y) && (Board.isOccupiedWhite(x-1, y) != true && Board.isOccupiedBlack(x-1, y) != true)) {
                 moves.add(x-1);
-                moves.add(y);
+                moves.add(y); 
             } 
-        }
 
         return moves;
     }
-    public void move(){
-
-    }
+    
     public void promote(){
 
     }

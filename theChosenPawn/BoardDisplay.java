@@ -15,10 +15,25 @@ public class BoardDisplay extends JPanel{
                             g.setColor(new java.awt.Color(255, 255, 230)); 
                         }
                         if (((x - xstart) / Constants.cellSize == GameDisplay.hoveredx) && ((y - ystart) / Constants.cellSize == GameDisplay.hoveredy)){
-                            g.setColor(new java.awt.Color(255, 230, 230));
+                            if (counter%2 == 0) {
+                                g.setColor(new java.awt.Color(120, 130, 70)); 
+                            } else {
+                                g.setColor(new java.awt.Color(255, 205, 180)); 
+                            }
                         }
                         if (((x - xstart) / Constants.cellSize == GameDisplay.selectedx) && ((y - ystart) / Constants.cellSize == GameDisplay.selectedy)){
-                            g.setColor(new java.awt.Color(255, 200, 200));
+                             if (counter%2 == 0) {
+                                g.setColor(new java.awt.Color(120, 130, 70)); 
+                            } else {
+                                g.setColor(new java.awt.Color(255, 205, 180)); 
+                            }
+                        }
+                        if (Moves.isValidMove((x - xstart) / Constants.cellSize, (y - ystart) / Constants.cellSize)) {
+                             if (counter%2 == 0) {
+                                g.setColor(new java.awt.Color(120, 130, 70)); 
+                            } else {
+                                g.setColor(new java.awt.Color(255, 205, 180)); 
+                            }
                         }
                         g.fillRect(x, y, Constants.cellSize, Constants.cellSize); // Draw each cell
                         counter++;
