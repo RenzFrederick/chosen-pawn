@@ -29,10 +29,6 @@ public class Board {
             occupiedxb.add(4);
             occupiedyb.add(i);
         }
-
-        //test case
-        occupiedxw.add(3);
-        occupiedyw.add(2);
     }
 
     public static int getTileX(int mx){
@@ -80,6 +76,27 @@ public class Board {
                     //update to newx and newy
                     occupiedxb.set(i, newx);
                     occupiedyb.set(i, newy);
+                    return;
+                }
+            }
+        }
+    }
+
+    public static void capturePiece(int x, int y){
+        if (isOccupiedWhite(x, y)){
+            for (int i = 0; i < occupiedxw.size(); i++){
+                if (occupiedxw.get(i) == x && Board.occupiedyw.get(i) == y){
+                    occupiedxw.remove(i);
+                    occupiedyw.remove(i);
+                    return;
+                }
+            }
+        }
+        else if (isOccupiedBlack(x, y)){
+            for (int i = 0; i < Board.occupiedxb.size(); i++){
+                if (occupiedxb.get(i) == x && Board.occupiedyb.get(i) == y){
+                    occupiedxb.remove(i);
+                    occupiedyb.remove(i);
                     return;
                 }
             }

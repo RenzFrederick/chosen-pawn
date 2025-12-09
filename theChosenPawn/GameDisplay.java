@@ -71,6 +71,9 @@ public class GameDisplay{
                     if (Moves.isValidMove(hoveredx, hoveredy)) {
                         //move piece
                         System.out.println("Move to: " + hoveredx + ", " + hoveredy);
+                        if (Board.isOccupiedBlack(hoveredx, hoveredy) || Board.isOccupiedWhite(hoveredx, hoveredy)) {
+                            Board.capturePiece(hoveredx, hoveredy);
+                        }
                         Board.move(selectedx, selectedy, hoveredx, hoveredy);
 
                         selectedx = -1;
