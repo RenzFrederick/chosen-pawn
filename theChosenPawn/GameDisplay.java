@@ -28,6 +28,9 @@ public class GameDisplay{
         backgroundLabel.setBounds(0, 0, frame.getWidth(), frame.getHeight());
         panel.add(backgroundLabel, Integer.valueOf(-1));
 
+        //label to show which turn it is
+        JLabel turn = new JLabel("Turn:" + TurnOrder.getTurns());
+
         // configure panel as background and add a transparent grid overlay
         panel.setLayout(null);
 
@@ -75,6 +78,8 @@ public class GameDisplay{
                             Board.capturePiece(hoveredx, hoveredy);
                         }
                         Board.move(selectedx, selectedy, hoveredx, hoveredy);
+                        TurnOrder.nextTurn();
+                        turn.setText("Turn:" + TurnOrder.getTurns());
 
                         selectedx = -1;
                         selectedy = -1;
@@ -113,9 +118,11 @@ public class GameDisplay{
         
         grid.setBounds(0, 0, 342, 683);
         pieces.setBounds(0, 0, 342, 683);
+        turn.setBounds(0, 0, 300, 80);
 
         panel.add(grid, Integer.valueOf(0));
         panel.add(pieces, Integer.valueOf(1));
+        panel.add(turn, Integer.valueOf(2));
 
         frame.add(panel);
         frame.setVisible(true);
