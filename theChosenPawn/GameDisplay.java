@@ -29,7 +29,7 @@ public class GameDisplay{
         panel.add(backgroundLabel, Integer.valueOf(-1));
 
         //label to show which turn it is
-        JLabel turn = new JLabel("Turn:" + TurnOrder.getTurns());
+        JLabel turn = new TurnDisplay();
 
         // configure panel as background and add a transparent grid overlay
         panel.setLayout(null);
@@ -79,7 +79,7 @@ public class GameDisplay{
                         }
                         Board.move(selectedx, selectedy, hoveredx, hoveredy);
                         TurnOrder.nextTurn();
-                        turn.setText("Turn:" + TurnOrder.getTurns());
+                        TurnDisplay.updateTurn();
 
                         selectedx = -1;
                         selectedy = -1;
