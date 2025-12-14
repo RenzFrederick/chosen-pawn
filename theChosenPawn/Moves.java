@@ -5,7 +5,7 @@ public class Moves {
     private static ArrayList<Integer> movesy = new ArrayList<Integer>();
 
     // recieves moves from pawn class loadMoves method
-    public static void set(ArrayList<Integer> positions){
+    public static void set(ArrayList<Integer> positions) {
         if (movesx.size() > 0) {
             movesx.clear();
         }
@@ -21,25 +21,12 @@ public class Moves {
         System.out.println(movesx);
         System.out.println(movesy);
     }
-    public static boolean isValidMove(int x, int y){
-        ArrayList<Integer> xs = new ArrayList<Integer>();
-        ArrayList<Integer> ys = new ArrayList<Integer>(); 
-        for (int i = 0; i < movesx.size(); i++){
-            if (movesx.get(i) == x){
-                xs.add(i);
-            }
-        }
-        for (int i = 0; i < movesy.size(); i++){
-            if (movesy.get(i) == y){
-                ys.add(i);
-            }
-        }
-        
-        for (int a : xs) {
-            for (int b : ys) {
-                if (a == b) {
-                    return true;
-                }
+
+    public static boolean isValidMove(int x, int y) {
+
+        for (int i = 0; i < movesx.size(); i++) {
+            if (movesx.get(i) == x && movesy.get(i) == y) {
+                return true;
             }
         }
         return false;

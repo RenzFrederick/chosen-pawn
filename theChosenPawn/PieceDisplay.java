@@ -17,14 +17,14 @@ public class PieceDisplay extends JPanel {
     @Override
     protected void paintComponent(java.awt.Graphics g) {
         super.paintComponent(g);
-        int xstart = (getWidth()-(5*Constants.cellSize))/2;
-        int ystart = (getHeight()-(5*Constants.cellSize))/3;
-        for (int x = xstart; x < xstart+(5*Constants.cellSize); x += Constants.cellSize) {
-            for (int y = ystart; y < ystart+(5*Constants.cellSize); y += Constants.cellSize) {
+        int xstart = (getWidth() - (5 * Constants.cellSize)) / 2;
+        int ystart = (getHeight() - (5 * Constants.cellSize)) / 3;
+        for (int x = xstart; x < xstart + (5 * Constants.cellSize); x += Constants.cellSize) {
+            for (int y = ystart; y < ystart + (5 * Constants.cellSize); y += Constants.cellSize) {
                 if (Board.isOccupiedBlack((x - xstart) / Constants.cellSize, (y - ystart) / Constants.cellSize)) {
                     g.drawImage(blackPawn, x, y, Constants.cellSize, Constants.cellSize, this);
-                }
-                else if (Board.isOccupiedWhite((x - xstart) / Constants.cellSize, (y - ystart) / Constants.cellSize)) {
+                } else if (Board.isOccupiedWhite((x - xstart) / Constants.cellSize,
+                        (y - ystart) / Constants.cellSize)) {
                     g.drawImage(whitePawn, x, y, Constants.cellSize, Constants.cellSize, this);
                 }
             }

@@ -1,9 +1,10 @@
 import java.awt.Image;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class TurnDisplay extends JLabel{
+public class TurnDisplay extends JLabel {
 
     private static final String black_image = "theChosenPawn\\sprites\\blackTurn.png";
     private static final String white_image = "theChosenPawn\\sprites\\whiteTurn.png";
@@ -16,6 +17,8 @@ public class TurnDisplay extends JLabel{
     public TurnDisplay() {
         super();
         instance = this;
+        instance.setAlignmentX(CENTER_ALIGNMENT);
+        instance.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         if (blackIcon == null || whiteIcon == null) {
             blackIcon = loadScaledIcon(black_image, 150, 75);
             whiteIcon = loadScaledIcon(white_image, 150, 75);
@@ -29,7 +32,7 @@ public class TurnDisplay extends JLabel{
         return new ImageIcon(img);
     }
 
-    public static void updateTurn(){
+    public static void updateTurn() {
         String t = TurnOrder.getTurns();
         if (t == "Black") {
             instance.setIcon(blackIcon);
