@@ -18,7 +18,9 @@ public class Rook extends Piece {
     }
 
     public ArrayList<Integer> loadMoves(int x, int y){
-       Pawn pawn = new Pawn();
+        Pawn pawn = new Pawn();
+        Knight knight = new Knight();
+        Bishop bishop = new Bishop();
         ArrayList<Integer> moves = new ArrayList<Integer>();
 
         // Ensure a bishop exists at the given coordinates
@@ -37,10 +39,12 @@ public class Rook extends Piece {
                 int nx = x + d[0];
                 int ny = y + d[1];
                 while (nx >= 0 && nx < 8 && ny >= 0 && ny < 8) {
-                    if (pawn.isOccupiedWhite(nx, ny) || isOccupiedWhite(nx, ny)) {
+                    if (pawn.isOccupiedWhite(nx, ny) || isOccupiedWhite(nx, ny)
+                    || bishop.isOccupiedWhite(nx, ny) || knight.isOccupiedWhite(nx, ny)) {
                         break;
                     }
-                    if (pawn.isOccupiedBlack(nx, ny) || isOccupiedBlack(nx, ny)) {
+                    if (pawn.isOccupiedBlack(nx, ny) || isOccupiedBlack(nx, ny)
+                    || bishop.isOccupiedBlack(nx, ny) || knight.isOccupiedBlack(nx, ny)) {
                         moves.add(nx);
                         moves.add(ny);
                         break;
@@ -56,10 +60,12 @@ public class Rook extends Piece {
                 int nx = x + d[0];
                 int ny = y + d[1];
                 while (nx >= 0 && nx < 8 && ny >= 0 && ny < 8) {
-                    if (pawn.isOccupiedBlack(nx, ny) || isOccupiedBlack(nx, ny)) {
+                    if (pawn.isOccupiedBlack(nx, ny) || isOccupiedBlack(nx, ny)
+                    || bishop.isOccupiedBlack(nx, ny) || knight.isOccupiedBlack(nx, ny)) {
                         break;
                     }
-                    if (pawn.isOccupiedWhite(nx, ny) || isOccupiedWhite(nx, ny)) {
+                    if (pawn.isOccupiedWhite(nx, ny) || isOccupiedWhite(nx, ny)
+                    || bishop.isOccupiedWhite(nx, ny) || knight.isOccupiedWhite(nx, ny)) {
                         moves.add(nx);
                         moves.add(ny);
                         break;

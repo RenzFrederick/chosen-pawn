@@ -19,6 +19,8 @@ public class Bishop extends Piece {
 
     public ArrayList<Integer> loadMoves(int x, int y){
         Pawn pawn = new Pawn();
+        Rook rook = new Rook();
+        Knight knight = new Knight();
         ArrayList<Integer> moves = new ArrayList<Integer>();
 
         // Ensure a bishop exists at the given coordinates
@@ -37,10 +39,12 @@ public class Bishop extends Piece {
                 int nx = x + d[0];
                 int ny = y + d[1];
                 while (nx >= 0 && nx < 8 && ny >= 0 && ny < 8) {
-                    if (pawn.isOccupiedWhite(nx, ny) || isOccupiedWhite(nx, ny)) {
+                    if (pawn.isOccupiedWhite(nx, ny) || isOccupiedWhite(nx, ny)
+                    || rook.isOccupiedWhite(nx, ny) || knight.isOccupiedWhite(nx, ny)) {
                         break;
                     }
-                    if (pawn.isOccupiedBlack(nx, ny) || isOccupiedBlack(nx, ny)) {
+                    if (pawn.isOccupiedBlack(nx, ny) || isOccupiedBlack(nx, ny)
+                    || rook.isOccupiedBlack(nx, ny) || knight.isOccupiedBlack(nx, ny)) {
                         moves.add(nx);
                         moves.add(ny);
                         break;
@@ -56,10 +60,12 @@ public class Bishop extends Piece {
                 int nx = x + d[0];
                 int ny = y + d[1];
                 while (nx >= 0 && nx < 8 && ny >= 0 && ny < 8) {
-                    if (pawn.isOccupiedBlack(nx, ny) || isOccupiedBlack(nx, ny)) {
+                    if (pawn.isOccupiedBlack(nx, ny) || isOccupiedBlack(nx, ny)
+                    || rook.isOccupiedBlack(nx, ny) || knight.isOccupiedBlack(nx, ny)) {
                         break;
                     }
-                    if (pawn.isOccupiedWhite(nx, ny) || isOccupiedWhite(nx, ny)) {
+                    if (pawn.isOccupiedWhite(nx, ny) || isOccupiedWhite(nx, ny)
+                    || rook.isOccupiedWhite(nx, ny) || knight.isOccupiedWhite(nx, ny)) {
                         moves.add(nx);
                         moves.add(ny);
                         break;

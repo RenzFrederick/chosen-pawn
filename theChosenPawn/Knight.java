@@ -18,7 +18,9 @@ public class Knight extends Piece {
     }
 
     public ArrayList<Integer> loadMoves(int x, int y){
-       Pawn pawn = new Pawn();
+        Pawn pawn = new Pawn();
+        Bishop bishop = new Bishop();
+        Rook rook = new Rook();
         ArrayList<Integer> moves = new ArrayList<Integer>();
 
         // Ensure a bishop exists at the given coordinates
@@ -36,10 +38,12 @@ public class Knight extends Piece {
             for (int[] d : dirs) {
                 int nx = x + d[0];
                 int ny = y + d[1];
-                    if (pawn.isOccupiedWhite(nx, ny) || isOccupiedWhite(nx, ny)) {
+                    if (pawn.isOccupiedWhite(nx, ny) || isOccupiedWhite(nx, ny)
+                    || rook.isOccupiedWhite(nx, ny) || bishop.isOccupiedWhite(nx, ny)) {
                         break;
                     }
-                    if (pawn.isOccupiedBlack(nx, ny) || isOccupiedBlack(nx, ny)) {
+                    if (pawn.isOccupiedBlack(nx, ny) || isOccupiedBlack(nx, ny)
+                    || rook.isOccupiedBlack(nx, ny) || bishop.isOccupiedBlack(nx, ny)) {
                         moves.add(nx);
                         moves.add(ny);
                         break;
@@ -51,10 +55,12 @@ public class Knight extends Piece {
             for (int[] d : dirs) {
                 int nx = x + d[0];
                 int ny = y + d[1];
-                    if (pawn.isOccupiedBlack(nx, ny) || isOccupiedBlack(nx, ny)) {
+                    if (pawn.isOccupiedBlack(nx, ny) || isOccupiedBlack(nx, ny)
+                    || rook.isOccupiedBlack(nx, ny) || bishop.isOccupiedBlack(nx, ny)) {
                         break;
                     }
-                    if (pawn.isOccupiedWhite(nx, ny) || isOccupiedWhite(nx, ny)) {
+                    if (pawn.isOccupiedWhite(nx, ny) || isOccupiedWhite(nx, ny)
+                    || rook.isOccupiedWhite(nx, ny) || bishop.isOccupiedWhite(nx, ny)) {
                         moves.add(nx);
                         moves.add(ny);
                         break;
