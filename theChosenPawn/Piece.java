@@ -5,6 +5,4 @@ public abstract class Piece {
     public abstract boolean isOccupiedBlack(int x, int y);
     public abstract ArrayList<Integer> loadMoves(int x, int y);
     public abstract void promote(int x, int y);
-    public abstract boolean hasPromotedwhite();
-    public abstract boolean hasPromotedblack();
 }

@@ -107,11 +107,4 @@ public class Knight extends Piece {
         }
     }
     
-    public boolean hasPromotedwhite() {
-        return (wx != -1 && wy != -1);
-    }
-
-    public boolean hasPromotedblack() {
-        return (bx != -1 && by != -1);
-    }
 }

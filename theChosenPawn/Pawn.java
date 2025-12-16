@@ -71,14 +71,14 @@ public class Pawn extends Piece {
                 }
             }
             if (isOccupiedWhite(x - 1, y + 1) || Rook.isOccupiedWhite(x - 1, y + 1)
-            || Bishop.isOccupiedBlack(x - 1, y + 1) || Knight.isOccupiedBlack(x - 1, y + 1)) {
+            || Bishop.isOccupiedWhite(x - 1, y + 1) || Knight.isOccupiedWhite(x - 1, y + 1)) {
                 if (x - 1 >= 0) {
                     moves.add(x - 1);
                     moves.add(y + 1);
                 }
             }
             if (isOccupiedWhite(x - 1, y - 1) || Rook.isOccupiedWhite(x - 1, y - 1) 
-                || Bishop.isOccupiedBlack(x - 1, y - 1) || Knight.isOccupiedBlack(x - 1, y - 1)) {
+                || Bishop.isOccupiedWhite(x - 1, y - 1) || Knight.isOccupiedWhite(x - 1, y - 1)) {
                 if (x - 1 >= 0) {
                     moves.add(x - 1);
                     moves.add(y - 1);
