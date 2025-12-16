@@ -7,11 +7,11 @@ public class TurnOrder {
 
     public static void nextTurn() {
         turns += 1;
-
         if (Board.noMoreMoves(getTurns()) || Board.noPiecesLeft(getTurns())) {
             System.out.println("Game Over! " + getTurns() + " has no more moves or pieces left.");
             System.exit(0);
         }
+        
     }
 
     public static String getTurns() {
