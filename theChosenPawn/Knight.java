@@ -40,13 +40,13 @@ public class Knight extends Piece {
                 int ny = y + d[1];
                     if (pawn.isOccupiedWhite(nx, ny) || isOccupiedWhite(nx, ny)
                     || rook.isOccupiedWhite(nx, ny) || bishop.isOccupiedWhite(nx, ny)) {
-                        break;
+                        continue;
                     }
                     if (pawn.isOccupiedBlack(nx, ny) || isOccupiedBlack(nx, ny)
                     || rook.isOccupiedBlack(nx, ny) || bishop.isOccupiedBlack(nx, ny)) {
                         moves.add(nx);
                         moves.add(ny);
-                        break;
+                        continue;
                     }
                     moves.add(nx);
                     moves.add(ny);
@@ -57,22 +57,20 @@ public class Knight extends Piece {
                 int ny = y + d[1];
                     if (pawn.isOccupiedBlack(nx, ny) || isOccupiedBlack(nx, ny)
                     || rook.isOccupiedBlack(nx, ny) || bishop.isOccupiedBlack(nx, ny)) {
-                        break;
+                        continue;
                     }
                     if (pawn.isOccupiedWhite(nx, ny) || isOccupiedWhite(nx, ny)
                     || rook.isOccupiedWhite(nx, ny) || bishop.isOccupiedWhite(nx, ny)) {
                         moves.add(nx);
                         moves.add(ny);
-                        break;
+                        continue;
                     }
                     moves.add(nx);
                     moves.add(ny);
-                    nx += d[0];
-                    ny += d[1];
             }
         }
 
-        System.out.println("Bishop moves: " + moves);
+        System.out.println("Knight moves: " + moves);
         return moves;
     }
 

@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class Board {
-    
 
+    //give tile x and y based on mouse coordinates
     public static int getTileX(int mx) {
         int xstart = (GameDisplay.frame.getWidth() - (5 * Constants.cellSize)) / 2;
         int xend = xstart + (5 * Constants.cellSize);
@@ -14,7 +14,7 @@ public class Board {
         }
 
     }
-
+    
     public static int getTileY(int my) {
         int ystart = (GameDisplay.frame.getHeight() - (5 * Constants.cellSize)) / 3;
         int yend = ystart + (5 * Constants.cellSize);
@@ -26,7 +26,7 @@ public class Board {
         }
 
     }
-    
+
     public static boolean pieceAt(int x, int y) {
         Pawn pawn = new Pawn();
         Rook rook = new Rook();
@@ -82,10 +82,12 @@ public class Board {
                 for (int y = 0; y < 5; y++) {
                     if (pawn.isOccupiedWhite(x, y)) {
                         ArrayList<Integer> moves = pawn.loadMoves(x, y);
-                        if (moves != null && moves.size() > 0) return false;
+                        if (moves != null && moves.size() > 0)
+                            return false;
                     } else if (rook.isOccupiedWhite(x, y)) {
                         ArrayList<Integer> moves = rook.loadMoves(x, y);
-                        if (moves != null && moves.size() > 0) return false;
+                        if (moves != null && moves.size() > 0)
+                            return false;
                     }
                 }
             }
@@ -95,10 +97,12 @@ public class Board {
                 for (int y = 0; y < 5; y++) {
                     if (pawn.isOccupiedBlack(x, y)) {
                         ArrayList<Integer> moves = pawn.loadMoves(x, y);
-                        if (moves != null && moves.size() > 0) return false;
+                        if (moves != null && moves.size() > 0)
+                            return false;
                     } else if (rook.isOccupiedBlack(x, y)) {
                         ArrayList<Integer> moves = rook.loadMoves(x, y);
-                        if (moves != null && moves.size() > 0) return false;
+                        if (moves != null && moves.size() > 0)
+                            return false;
                     }
                 }
             }
@@ -107,6 +111,5 @@ public class Board {
             return false;
         }
     }
-        
 
 }

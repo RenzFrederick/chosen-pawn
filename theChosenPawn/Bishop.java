@@ -96,8 +96,8 @@ public class Bishop extends Piece {
     }
 
     public static void move(int oldx, int oldy, int newx, int newy) {
-        System.out.println("Rook moved from: " + oldx + ", " + oldy + " to " + newx + ", " + newy);
-        // check which color the rook belongs to
+        System.out.println("Bishop moved from: " + oldx + ", " + oldy + " to " + newx + ", " + newy);
+        // check which color the bishop belongs to
             if (wx == oldx && wy == oldy) {
                 wx = newx;
                 wy = newy;
@@ -109,7 +109,7 @@ public class Bishop extends Piece {
         }
         
     public static void capturePiece(int x, int y) {
-        System.out.println("Rook captured at: " + x + ", " + y);
+        System.out.println("Bishop captured at: " + x + ", " + y);
         if (wx == x && wy == y) {
             wx = -2;
             wy = -2;

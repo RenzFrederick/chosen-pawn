@@ -18,12 +18,9 @@ public class Moves {
             movesy.add(positions.get(i + 1));
         }
 
-        System.out.println(movesx);
-        System.out.println(movesy);
     }
 
     public static boolean isValidMove(int x, int y) {
-
         for (int i = 0; i < movesx.size(); i++) {
             if (movesx.get(i) == x && movesy.get(i) == y) {
                 return true;

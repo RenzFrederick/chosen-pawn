@@ -78,7 +78,7 @@ public class Rook extends Piece {
             }
         }
 
-        System.out.println("Bishop moves: " + moves);
+        System.out.println("Rook moves: " + moves);
         return moves;
     }
 
