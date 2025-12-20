@@ -1,4 +1,12 @@
+package gui;
 import javax.swing.*;
+import logic.Bishop;
+import logic.Knight;
+import logic.Pawn;
+import logic.Piece;
+import logic.Rook;
+import logic.Moves;
+import logic.TurnOrder;
 
 public class Promote extends JPanel {
     private static Piece pawn = new Pawn();
@@ -77,8 +85,8 @@ public class Promote extends JPanel {
     public static void update(int x, int y){
         if (instance == null) return;
 
-            if ((pawn.isOccupiedWhite(x, y) && (whitePromoted != true)&& TurnOrder.getTurns() == "White") 
-                || (pawn.isOccupiedBlack(x, y) && (blackPromoted != true) && TurnOrder.getTurns() == "Black")) {
+            if ((pawn.isOccupiedWhite(x, y) && !whitePromoted && "White".equals(TurnOrder.getTurns())) 
+                || (pawn.isOccupiedBlack(x, y) && !blackPromoted && "Black".equals(TurnOrder.getTurns()))) {
                 instance.setVisible(true);
             } else {
                 instance.setVisible(false);

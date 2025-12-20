@@ -1,9 +1,12 @@
+package gui;
 import java.awt.Image;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
+import logic.TurnOrder;
 
 public class TurnDisplay extends JLabel {
 

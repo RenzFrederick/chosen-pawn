@@ -1,3 +1,4 @@
+package logic;
 public class TurnOrder {
     private static int turns;
 

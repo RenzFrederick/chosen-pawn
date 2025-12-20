@@ -1,8 +1,11 @@
+package logic;
+
 import java.util.ArrayList;
 
-public class Rook extends Piece {
-    public static int bx = -1, by = -1, wx = -1, wy = -1;
+public class Bishop extends Piece {
+    private static int bx = -1, by = -1, wx = -1, wy = -1;
 
+    //check if a bishop is at the given coordinates
     public boolean isOccupiedWhite(int x, int y) {
         if (wx == x && wy == y) {
             return true;
@@ -19,8 +22,8 @@ public class Rook extends Piece {
 
     public ArrayList<Integer> loadMoves(int x, int y){
         Pawn pawn = new Pawn();
+        Rook rook = new Rook();
         Knight knight = new Knight();
-        Bishop bishop = new Bishop();
         ArrayList<Integer> moves = new ArrayList<Integer>();
 
         // Ensure a bishop exists at the given coordinates
@@ -32,7 +35,7 @@ public class Rook extends Piece {
         boolean whiteTurn = "White".equals(turn);
 
         // Directions: NE, NW, SE, SW
-        int[][] dirs = {{0,1},{0,-1},{1,0},{-1,0}};
+        int[][] dirs = {{1,1},{1,-1},{-1,1},{-1,-1}};
 
         if (whiteTurn && x == wx && y == wy) {
             for (int[] d : dirs) {
@@ -40,11 +43,11 @@ public class Rook extends Piece {
                 int ny = y + d[1];
                 while (nx >= 0 && nx < 8 && ny >= 0 && ny < 8) {
                     if (pawn.isOccupiedWhite(nx, ny) || isOccupiedWhite(nx, ny)
-                    || bishop.isOccupiedWhite(nx, ny) || knight.isOccupiedWhite(nx, ny)) {
+                    || rook.isOccupiedWhite(nx, ny) || knight.isOccupiedWhite(nx, ny)) {
                         break;
                     }
                     if (pawn.isOccupiedBlack(nx, ny) || isOccupiedBlack(nx, ny)
-                    || bishop.isOccupiedBlack(nx, ny) || knight.isOccupiedBlack(nx, ny)) {
+                    || rook.isOccupiedBlack(nx, ny) || knight.isOccupiedBlack(nx, ny)) {
                         moves.add(nx);
                         moves.add(ny);
                         break;
@@ -61,11 +64,11 @@ public class Rook extends Piece {
                 int ny = y + d[1];
                 while (nx >= 0 && nx < 8 && ny >= 0 && ny < 8) {
                     if (pawn.isOccupiedBlack(nx, ny) || isOccupiedBlack(nx, ny)
-                    || bishop.isOccupiedBlack(nx, ny) || knight.isOccupiedBlack(nx, ny)) {
+                    || rook.isOccupiedBlack(nx, ny) || knight.isOccupiedBlack(nx, ny)) {
                         break;
                     }
                     if (pawn.isOccupiedWhite(nx, ny) || isOccupiedWhite(nx, ny)
-                    || bishop.isOccupiedWhite(nx, ny) || knight.isOccupiedWhite(nx, ny)) {
+                    || rook.isOccupiedWhite(nx, ny) || knight.isOccupiedWhite(nx, ny)) {
                         moves.add(nx);
                         moves.add(ny);
                         break;
@@ -78,7 +81,7 @@ public class Rook extends Piece {
             }
         }
 
-        System.out.println("Rook moves: " + moves);
+        System.out.println("Bishop moves: " + moves);
         return moves;
     }
 
@@ -96,8 +99,8 @@ public class Rook extends Piece {
     }
 
     public static void move(int oldx, int oldy, int newx, int newy) {
-        System.out.println("Rook moved from: " + oldx + ", " + oldy + " to " + newx + ", " + newy);
-        // check which color the rook belongs to
+        System.out.println("Bishop moved from: " + oldx + ", " + oldy + " to " + newx + ", " + newy);
+        // check which color the bishop belongs to
             if (wx == oldx && wy == oldy) {
                 wx = newx;
                 wy = newy;
@@ -109,7 +112,7 @@ public class Rook extends Piece {
         }
         
     public static void capturePiece(int x, int y) {
-        System.out.println("Rook captured at: " + x + ", " + y);
+        System.out.println("Bishop captured at: " + x + ", " + y);
         if (wx == x && wy == y) {
             wx = -2;
             wy = -2;

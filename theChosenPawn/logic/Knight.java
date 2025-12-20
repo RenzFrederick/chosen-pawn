@@ -1,7 +1,9 @@
+package logic;
 import java.util.ArrayList;
 
+
 public class Knight extends Piece {
-    public static int bx = -1, by = -1, wx = -1, wy = -1;
+    private static int bx = -1, by = -1, wx = -1, wy = -1;
 
     public boolean isOccupiedWhite(int x, int y) {
         if (wx == x && wy == y) {

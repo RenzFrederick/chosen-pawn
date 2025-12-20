@@ -1,4 +1,14 @@
+package gui;
 import javax.swing.*;
+
+import logic.Bishop;
+import logic.Board;
+import logic.Knight;
+import logic.Moves;
+import logic.Pawn;
+import logic.Rook;
+import logic.TurnOrder;
+
 import java.awt.event.*;
 
 public class GameMouseHandler implements MouseMotionListener, MouseListener {
