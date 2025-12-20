@@ -3,6 +3,7 @@ import java.awt.Image;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 public class TurnDisplay extends JLabel {
 
@@ -19,9 +20,11 @@ public class TurnDisplay extends JLabel {
         instance = this;
         instance.setAlignmentX(CENTER_ALIGNMENT);
         instance.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        instance.setHorizontalAlignment(SwingConstants.CENTER);
+        instance.setVerticalAlignment(SwingConstants.CENTER);
         if (blackIcon == null || whiteIcon == null) {
-            blackIcon = loadScaledIcon(black_image, 150, 75);
-            whiteIcon = loadScaledIcon(white_image, 150, 75);
+            blackIcon = loadScaledIcon(black_image, 175, 90);
+            whiteIcon = loadScaledIcon(white_image, 175, 90);
         }
         updateTurn();
     }
